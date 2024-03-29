@@ -13,7 +13,7 @@ const verifyAdmin = async (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        if (decoded.email !== process.env.ADMIN_EMAIL || decoded.accessCode !== process.env.ACCESS_CODE) {
+        if (!decoded || decoded.email !== process.env.ADMIN_EMAIL || decoded.accessCode !== process.env.ACCESS_CODE) {
             return res.status(401).json({ error: 'Access denied' })
         }
 

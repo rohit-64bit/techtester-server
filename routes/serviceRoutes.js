@@ -1,5 +1,6 @@
 const express = require('express');
 const Service = require('../models/Service');
+const verifyAdmin = require('../middlewares/verifyAdmin');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -24,7 +25,7 @@ router.get('/', async (req, res) => {
 
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', verifyAdmin, async (req, res) => {
 
     try {
 
@@ -57,7 +58,7 @@ router.post('/create', async (req, res) => {
 
 })
 
-router.put('/update/:id', async (req, res) => {
+router.put('/update/:id', verifyAdmin, async (req, res) => {
 
     try {
 
@@ -94,7 +95,7 @@ router.put('/update/:id', async (req, res) => {
     }
 })
 
-router.delete('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', verifyAdmin, async (req, res) => {
 
     try {
 
