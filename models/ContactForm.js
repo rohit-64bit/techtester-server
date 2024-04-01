@@ -20,7 +20,7 @@ const ContactFormSchema = new Schema({
         require: true
     },
     status: {
-        type: String, // sjkdbcvsc
+        type: String,
         require: true,
         enum: ['new', 'pending', 'completed']
     }
